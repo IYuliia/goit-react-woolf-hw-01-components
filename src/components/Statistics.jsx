@@ -1,12 +1,14 @@
-const Statistics = ({ title, stats }) => (
-  <section className="statistics">
-    {title && <h2 className="title">{title}</h2>}
+import styles from './Statistics.module.css';
 
-    <ul className="stat-list">
-      {stats.map(({ id, label, percentage }) => (
-        <li className="item" key={id}>
-          <span className="label">{label}</span>
-          <span className="percentage">{percentage}%</span>
+const Statistics = ({ title, stats }) => (
+  <section className={styles.statistics}>
+    {title && <h2 className={styles.title}>{title}</h2>}
+
+    <ul className={styles.statlist}>
+      {stats.map(({ id, label, percentage }, index) => (
+        <li className={`${styles.item} ${styles[`color${index}`]}`} key={id}>
+          <span className={styles.label}>{label}</span>
+          <span className={styles.percentage}>{percentage}%</span>
         </li>
       ))}
     </ul>
